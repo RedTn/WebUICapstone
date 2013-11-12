@@ -7,9 +7,9 @@
  */
  include ('mongo.php');
  if (isset($_GET['id'])) {
- 	$people->remove(array(
+ 	$tooth->remove(array(
  		"_id" => new MongoID($_GET['id'])
  	));
- 	header('Location: /mongo');
+ 	header('Location: /mongo/db/toothparam.php');
  }
 ?>
