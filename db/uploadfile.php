@@ -27,3 +27,6 @@
  	echo $file_result;
  }
 ?>
+<form method = "LINK" Action="/mongo/db/uploadfile_form.php">
+	<INPUT TYPE="submit" VALUE="Back">
+</form>
