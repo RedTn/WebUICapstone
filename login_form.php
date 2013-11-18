@@ -20,7 +20,7 @@ function check(form)/*function to check userid & password*/
 /*the following code checkes whether the entered userid and password are matching*/
 if(form.login.value == "user" && form.password.value == "pass")
 {
-window.open('dummy.php')/*opens the target page while Id & password matches*/
+window.open('index.php')/*opens the target page while Id & password matches*/
 }
 else
 {
