@@ -5,11 +5,19 @@
  * To change the template for this generated file go to
  * Window - Preferences - PHPeclipse - PHP - Code Templates
  */
-
+ include('mongo.php');
+ if (isset($_POST['clear'])) 
+{ 
+   ob_end_clean();
+}  
 ?>
 
 <form method = "LINK" Action="/mongo/index.php">
 	<INPUT TYPE="submit" VALUE="Go Back">
+</form>
+
+<form action="" method="POST">
+<input type="submit" name="clear" value="Clear Page"/> <br>
 </form>
 
 <form action="" method="POST">
@@ -38,7 +46,14 @@
  		$textArray = explode("\n", $text);
  		if(isset($textArray)) {
  		   foreach($textArray as $value) {
- 		   		echo "$value <br>";
+ 		   		//echo "$value <br>";
+ 		   		$parsedvalues = explode(",", $value);
+ 		   		if(isset($parsedvalues)) {
+ 		   			foreach($parsedvalues as $value2) {
+ 		   				echo "$value2 <br>";
+ 		   			}
+ 		   		}
+ 		   		
  		   }
  		}
  		}
