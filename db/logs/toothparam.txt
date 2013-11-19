@@ -1,3 +1,3 @@
-1,50.5,60.5,90,12.5,16,12.7,12.8,12.9,13.0,13.1,13.2,13.3,13.4,13.5,13.6,17,13.8,13.9,14.0,14.1,14.2,14.3,14.4
+toothparam//HookAngle,TopAngle,TangentialAngle,RadialAngle,BevelDirection,BevelTop,BevelFace,Feed_Rate,CutDepth,TopLength,FaceLength,SideLength,Runway,PlungeDepth,PlungeOffset,NoRounds,Pitch,ChipBreakDepth,ChipBreakOffset,ChamferLeft,ChamferRight,ChamferFlatWidth,ChamferHeightOffset||1,50.5,60.5,90,12.5,16,12.7,12.8,12.9,13.0,13.1,13.2,13.3,13.4,13.5,13.6,17,13.8,13.9,14.0,14.1,14.2,14.3,14.4
 98,20.2,20.3,20.4,20.5,20.6,20.7,20.8,20.9,21.0,21.1,21.2,21.3,21.4,21.5,21.6,21.7,21.8,21.9,22.0,23.1,23.2,23.3,23.4
 1.5,3.5,2.4

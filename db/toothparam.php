@@ -27,6 +27,17 @@
 	<p><button>Add </button></p>
 </form>
 
+<!--TO BE PUT IN
+<script type='text/javascript'>
+<?php
+foreach ($cursor as $doc) {
+    $js_array = json_encode($doc);
+echo "var javascript_array = ". $js_array . ";\n";
+}
+?>
+</script>
+-->
+
 <?php if ($cursor->count() > 0): ?>
 <ul>
 	<?php foreach($cursor as $doc): ?>
