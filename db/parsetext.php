@@ -47,7 +47,7 @@ foreach(glob("logs/*.txt") as $filename){
 		<?php echo "$filename<br>";
 	}
 	?>
-	test
+
 <p></p>
 <?php
 if( isset($_POST['txt'])) {
