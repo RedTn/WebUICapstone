@@ -14,13 +14,11 @@ label,a
 </head>
 
 <body>
+
+
 <?php
 	if(isset($_POST['formSubmit'])) {
-		//$SendData = $_POST[];
-		/*if(!isset($_POST['ToothParam']) && !isset($_POST['SawDimensions']) && !isset($_POST['OperationData'])){
-			echo("<p> You did not select any data to display!");
-		}
-		*/
+
 		if(!isset($_POST['ToothParam']))
 		{
 						if(!isset($_POST['SawDimensions']))
