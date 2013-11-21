@@ -19,4 +19,6 @@
 	<INPUT TYPE="submit" VALUE="Upload Text File">
 </form>
 
-
+<form method = "LINK" Action="db/display.php">
+	<INPUT TYPE="submit" VALUE="Display Database">
+</form>
