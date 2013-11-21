@@ -17,6 +17,7 @@ label,a
 
 
 <?php
+
 	if(isset($_POST['formSubmit'])) {
 
 		if(!isset($_POST['ToothParam']))
