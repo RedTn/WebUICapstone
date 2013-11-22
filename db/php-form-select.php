@@ -165,9 +165,8 @@ label,a
 				array_push($dboutputs, $buffer);
 				$buffer = '';
 			}
-			//Screenshot here
 			var_dump($dboutputs);
-			//**************
+			//OUTPUT: array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " }
 		}
 	}
 
