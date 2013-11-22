@@ -134,7 +134,9 @@ label,a
 				array_push($dboutputs, $buffer);
 				$buffer = '';
 			}
+			//Screenshot here
 			var_dump($dboutputs);
+			//**************
 		}
 	}
 
