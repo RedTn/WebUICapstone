@@ -35,8 +35,10 @@ label,a
 									}
 									else 
 									{
-										$OD = $_POST['OperationData'];
-										$SendData = $OD;
+										$OD = array("OperationData");
+										$ODm = $_POST['OperationData'];
+										
+										$SendData = array_merge($OD, $ODm);
 										$nS = count($SendData);
 										for($i=0; $i<$nS; $i++)
 										{
@@ -46,8 +48,10 @@ label,a
 						}	
 						else if(!isset($_POST['OperationData']))
 						{
-									$SD = $_POST['SawDimensions'];
-									$SendData = $SD;
+									$SD = array("SawSimensions"); 
+									$SDm = $_POST['SawDimensions'];
+									
+									$SendData = array_merge($SD, $SDm);
 									$nS = count($SendData);
 									for($i=0; $i<$nS; $i++)
 									{
@@ -57,9 +61,15 @@ label,a
 						
 						else 
 						{
-									$SD = $_POST['SawDimensions'];
-									$OD = $_POST['OperationData'];
-									$SendData = array_merge($SD, $OD);
+									$SD = array("SawDimensions");
+									$SDm = $_POST['SawDimensions'];
+									$SDa = array_merge($SD, $SDm);
+									
+									$OD = array("OperationData");
+									$ODm = $_POST['OperationData'];
+									$ODa = array_merge($OD, $ODm);
+									
+									$SendData = array($SDa, $ODa);
 									$nS = count($SendData);
 									for($i=0; $i<$nS; $i++)
 									{
@@ -71,8 +81,10 @@ label,a
 						
 		else if(!isset($_POST['SawDimensions']) && !isset($_POST['OperationData']))
 		{
-					$TP = $_POST['ToothParam'];
-					$SendData = $TP;
+					$TP = array("ToothParam");
+					$TPm = $_POST['ToothParam'];
+					
+					$SendData = array_merge($TP, $TPm);
 					$nS = count($SendData);
 					for($i=0; $i<$nS; $i++)
 					{
@@ -82,9 +94,15 @@ label,a
 		
 		else if(!isset($_POST['SawDimensions']))
 		{
-					$TP = $_POST['ToothParam'];
-					$OD = $_POST['OperationData'];
-					$SendData = array_merge($TP, $OD);
+					$TP = array("ToothParam");
+					$TPm = $_POST['ToothParam'];
+					$TPa = array_merge($TP, $TPm);
+					
+					$OD = array("OpertaionData");
+					$ODm = $_POST['OperationData'];
+					$ODa = array_merge($OD, $ODm);
+					
+					$SendData = array($TPa, $ODa);
 					$nS = count($SendData);
 					for($i=0; $i<$nS; $i++)
 					{
@@ -94,9 +112,15 @@ label,a
 		
 		else if(!isset($_POST['OperationData']))
 		{
-					$TP = $_POST['ToothParam'];
-					$SD = $_POST['SawDimensions'];
-					$SendData = array_merge($TP, $SD);
+					$TP = array("ToothParam");
+					$TPm = $_POST['ToothParam'];
+					$TPa = array_merge($TP, $TPm);
+					
+					$SD = array("SawSimensions"); 
+					$SDm = $_POST['SawDimensions'];
+					$SDa = array_merge($SD, $SDm);
+					
+					$SendData = array($TPa, $SDa);
 					$nS = count($SendData);
 					for($i=0; $i<$nS; $i++)
 					{
@@ -105,20 +129,27 @@ label,a
 		}
 		else 
 		{
-					$TP = $_POST['ToothParam'];
-					$SD = $_POST['SawDimensions'];
-					$OD = $_POST['OperationData'];
-					$SendDatam = array_merge($TP, $SD);
-					$SendData = array_merge($SendDatam, $OD);
+					$TP = array("ToothParam");
+					$TPm = $_POST['ToothParam'];
+					$TPa = array_merge($TP, $TPm);
+					
+					$SD = array("SawSimensions"); 
+					$SDm = $_POST['SawDimensions'];
+					$SDa = array_merge($SD, $SDm);
+					
+					$OD = array("OpertaionData");
+					$ODm = $_POST['OperationData'];
+					$ODa = array_merge($OD, $ODm);
+					
+					$SendData = array($TPa, $SDa, $ODa);
+					
 					$nS = count($SendData);
 					for($i=0; $i<$nS; $i++)
 					{
 						echo($SendData[$i] . " ");
 					}
 		
-		//array_push($SendData, $OD);
-		//array_push($SendData, $SD);
-		//array_push();
+
 		}
 		$dboutputs = array();
 	
