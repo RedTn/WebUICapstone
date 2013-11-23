@@ -20,161 +20,197 @@ label,a
 
 <?php
 	//COMMENT THIS OUT TO WORK ON NON MONGODB
-		include('mongo.php');
-	//*****************************
+include('mongo.php');
+//*****************************
 
-	if(isset($_POST['formSubmit'])) {
-
-		if(!isset($_POST['ToothParam']))
+if(isset($_POST['formSubmit'])) {
+	
+	if(!isset($_POST['toothparam']))
+	{
+		if(!isset($_POST['SawDimensions']))
 		{
-						if(!isset($_POST['SawDimensions']))
-						{
-									if(!isset($_POST['OperationData']))
-									{
-										echo("<p> You did not select any data to display!");
-									}
-									else 
-									{
-										$OD = array("OperationData");
-										$ODm = $_POST['OperationData'];
-										
-										$SendData = array_merge($OD, $ODm);
-										$nS = count($SendData);
-										for($i=0; $i<$nS; $i++)
-										{
-											echo($SendData[$i] . " ");
-										}
-									}
-						}	
-						else if(!isset($_POST['OperationData']))
-						{
-									$SD = array("SawSimensions"); 
-									$SDm = $_POST['SawDimensions'];
-									
-									$SendData = array_merge($SD, $SDm);
-									$nS = count($SendData);
-									for($i=0; $i<$nS; $i++)
-									{
-										echo($SendData[$i] . " ");
-									}
-						}
-						
-						else 
-						{
-									$SD = array("SawDimensions");
-									$SDm = $_POST['SawDimensions'];
-									$SDa = array_merge($SD, $SDm);
-									
-									$OD = array("OperationData");
-									$ODm = $_POST['OperationData'];
-									$ODa = array_merge($OD, $ODm);
-									
-									$SendData = array($SDa, $ODa);
-									$nS = count($SendData);
-									for($i=0; $i<$nS; $i++)
-									{
-										echo($SendData[$i] . " ");
-									}
-						}
-						
-		}				
-						
-		else if(!isset($_POST['SawDimensions']) && !isset($_POST['OperationData']))
-		{
-					$TP = array("ToothParam");
-					$TPm = $_POST['ToothParam'];
-					
-					$SendData = array_merge($TP, $TPm);
-					$nS = count($SendData);
-					for($i=0; $i<$nS; $i++)
-					{
-						echo($SendData[$i] . " ");
-					}
-		}
-		
-		else if(!isset($_POST['SawDimensions']))
-		{
-					$TP = array("ToothParam");
-					$TPm = $_POST['ToothParam'];
-					$TPa = array_merge($TP, $TPm);
-					
-					$OD = array("OpertaionData");
-					$ODm = $_POST['OperationData'];
-					$ODa = array_merge($OD, $ODm);
-					
-					$SendData = array($TPa, $ODa);
-					$nS = count($SendData);
-					for($i=0; $i<$nS; $i++)
-					{
-						echo($SendData[$i] . " ");
-					}
-		}
-		
+			if(!isset($_POST['OperationData']))
+			{
+				echo("<p> You did not select any data to display!");
+			}
+			else 
+			{
+				$OD = array("OperationData");
+				$ODm = $_POST['OperationData'];
+				
+				$SendData = array_merge($OD, $ODm);
+				$nS = count($SendData);
+				for($i=0; $i<$nS; $i++)
+				{
+					echo($SendData[$i] . " ");
+				}
+			}
+		}	
 		else if(!isset($_POST['OperationData']))
 		{
-					$TP = array("ToothParam");
-					$TPm = $_POST['ToothParam'];
-					$TPa = array_merge($TP, $TPm);
-					
-					$SD = array("SawSimensions"); 
-					$SDm = $_POST['SawDimensions'];
-					$SDa = array_merge($SD, $SDm);
-					
-					$SendData = array($TPa, $SDa);
-					$nS = count($SendData);
-					for($i=0; $i<$nS; $i++)
-					{
-						echo($SendData[$i] . " ");
-					}
+			$SD = array("SawSimensions"); 
+			$SDm = $_POST['SawDimensions'];
+			
+			$SendData = array_merge($SD, $SDm);
+			$nS = count($SendData);
+			for($i=0; $i<$nS; $i++)
+			{
+				echo($SendData[$i] . " ");
+			}
 		}
+		
 		else 
 		{
-					$TP = array("ToothParam");
-					$TPm = $_POST['ToothParam'];
-					$TPa = array_merge($TP, $TPm);
-					
-					$SD = array("SawSimensions"); 
-					$SDm = $_POST['SawDimensions'];
-					$SDa = array_merge($SD, $SDm);
-					
-					$OD = array("OpertaionData");
-					$ODm = $_POST['OperationData'];
-					$ODa = array_merge($OD, $ODm);
-					
-					$SendData = array($TPa, $SDa, $ODa);
-					
-					$nS = count($SendData);
-					for($i=0; $i<$nS; $i++)
-					{
-						echo($SendData[$i] . " ");
-					}
-		
-
-		}
-		$dboutputs = array();
-	
-		//$tooth = "toothparam";
-		$cursor = $tooth->find();
-		if($cursor->count() > 0) {
-			foreach($cursor as $doc) {
-				$buffer = '';
-				foreach($SendData as $header) {
-					$buffer .= $header . ": ";
-					$buffer .= $doc[$header] . "; ";
-				}
-				array_push($dboutputs, $buffer);
-				$buffer = '';
+			$SD = array("SawDimensions");
+			$SDm = $_POST['SawDimensions'];
+			$SDa = array_merge($SD, $SDm);
+			
+			$OD = array("OperationData");
+			$ODm = $_POST['OperationData'];
+			$ODa = array_merge($OD, $ODm);
+			
+			$SendData = array($SDa, $ODa);
+			$nS = count($SendData);
+			for($i=0; $i<$nS; $i++)
+			{
+				echo($SendData[$i] . " ");
 			}
-			var_dump($dboutputs);
-			//OUTPUT: array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " }
+		}
+		
+	}				
+	
+	else if(!isset($_POST['SawDimensions']) && !isset($_POST['OperationData']))
+	{
+		$TP = array("toothparam");
+		$TPm = $_POST['toothparam'];
+		
+		$SendData = array_merge($TP, $TPm);
+		$nS = count($SendData);
+		for($i=0; $i<$nS; $i++)
+		{
+			echo($SendData[$i] . " ");
 		}
 	}
+	
+	else if(!isset($_POST['SawDimensions']))
+	{
+		$TP = array("toothparam");
+		$TPm = $_POST['toothparam'];
+		$TPa = array_merge($TP, $TPm);
+		
+		$OD = array("OpertaionData");
+		$ODm = $_POST['OperationData'];
+		$ODa = array_merge($OD, $ODm);
+		
+		$SendData = array($TPa, $ODa);
+		$nS = count($SendData);
+		for($i=0; $i<$nS; $i++)
+		{
+			echo($SendData[$i] . " ");
+		}
+	}
+	
+	else if(!isset($_POST['OperationData']))
+	{
+		$TP = array("toothparam");
+		$TPm = $_POST['toothparam'];
+		$TPa = array_merge($TP, $TPm);
+		
+		$SD = array("SawDimensions"); 
+		$SDm = $_POST['SawDimensions'];
+		$SDa = array_merge($SD, $SDm);
+		
+		$SendData = array($TPa, $SDa);
+		$nS = count($SendData);
+		for($i=0; $i<$nS; $i++)
+		{
+			echo($SendData[$i] . " ");
+		}
+	}
+	else 
+	{
+		$TP = array("toothparam");
+		$TPm = $_POST['toothparam'];
+		$TPa = array_merge($TP, $TPm);
+		
+		$SD = array("SawDimensions"); 
+		$SDm = $_POST['SawDimensions'];
+		$SDa = array_merge($SD, $SDm);
+		
+		$OD = array("OpertaionData");
+		$ODm = $_POST['OperationData'];
+		$ODa = array_merge($OD, $ODm);
+		
+		$SendData = array($TPa, $SDa, $ODa);
+		
+		$nS = count($SendData);
+		for($i=0; $i<$nS; $i++)
+		{
+			echo($SendData[$i] . " ");
+		}
+		
+		
+	}
+	$dboutputs = array();
+	
+	//var_dump($SendData);
+	
+	foreach($SendData as $struct) {
+		if(is_string($struct)) {
+			$outstruct = $db->$struct;
+			$cursor = $outstruct->find();
+			if($cursor->count() > 0) {
+				foreach($cursor as $doc) {
+					$buffer = '';
+					$skipheader = true;
+					foreach($SendData as $header) {
+						if($skipheader) {
+							$skipheader = false;
+						}
+						else {
+						$buffer .= $header . ": ";
+						$buffer .= $doc[$header] . "; ";
+						}
+					}
+					array_push($dboutputs, $buffer);
+					$buffer = '';
+				}
+				var_dump($dboutputs);
+				//OUTPUT: array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " }
+			}
+			break;
+		}
+		else if(is_array($struct)) {
+			var_dump($struct);
+		}
+		else {
+			echo "Error, unknown type <br>";
+		}
+	}
+	/*
+	 $cursor = $struct[0]->find();
+	 if($cursor->count() > 0) {
+	 foreach($cursor as $doc) {
+	 $buffer = '';
+	 foreach($SendData as $header) {
+	 $buffer .= $header . ": ";
+	 $buffer .= $doc[$header] . "; ";
+	 }
+	 array_push($dboutputs, $buffer);
+	 $buffer = '';
+	 }
+	 var_dump($dboutputs);
+	 //OUTPUT: array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " }
+	  }
+	  */
+	
+}
 
 ?>
 
 <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-	<label for='ToothParam[]'>To select multiple elements hold down the 'ctrl' key <br/><br/>Tooth Parameters<br/>Select data you would like displayed:</label><br>
-	<select multiple="multiple" name="ToothParam[]">
+	<label for='toothparam[]'>To select multiple elements hold down the 'ctrl' key <br/><br/>Tooth Parameters<br/>Select data you would like displayed:</label><br>
+	<select multiple="multiple" name="toothparam[]">
 		<option value="HookAngle">Hook Angle</option>
 		<option value="TopAngle">Top Angle</option>
 		<option value="TangentialAngle">Tangential Angle</option>
