@@ -48,7 +48,7 @@ if(isset($_POST['formSubmit'])) {
 		}	
 		else if(!isset($_POST['OperationData']))
 		{
-			$SD = array("SawSimensions"); 
+			$SD = array("SawDimensions"); 
 			$SDm = $_POST['SawDimensions'];
 			
 			$SendData = array_merge($SD, $SDm);
@@ -69,7 +69,7 @@ if(isset($_POST['formSubmit'])) {
 			$ODm = $_POST['OperationData'];
 			$ODa = array_merge($OD, $ODm);
 			
-			$SendData = array($SDa, $ODa);
+			$SendData = array(array($SDa), array($ODa));
 			$nS = count($SendData);
 			for($i=0; $i<$nS; $i++)
 			{
@@ -102,7 +102,7 @@ if(isset($_POST['formSubmit'])) {
 		$ODm = $_POST['OperationData'];
 		$ODa = array_merge($OD, $ODm);
 		
-		$SendData = array($TPa, $ODa);
+		$SendData = array(array($TPa), array($ODa));
 		$nS = count($SendData);
 		for($i=0; $i<$nS; $i++)
 		{
@@ -120,7 +120,7 @@ if(isset($_POST['formSubmit'])) {
 		$SDm = $_POST['SawDimensions'];
 		$SDa = array_merge($SD, $SDm);
 		
-		$SendData = array($TPa, $SDa);
+		$SendData = array(array($TPa), array($SDa));
 		$nS = count($SendData);
 		for($i=0; $i<$nS; $i++)
 		{
@@ -141,7 +141,7 @@ if(isset($_POST['formSubmit'])) {
 		$ODm = $_POST['OperationData'];
 		$ODa = array_merge($OD, $ODm);
 		
-		$SendData = array($TPa, $SDa, $ODa);
+		$SendData = array(array($TPa), array($SDa), array($ODa));
 		
 		$nS = count($SendData);
 		for($i=0; $i<$nS; $i++)
@@ -168,8 +168,8 @@ if(isset($_POST['formSubmit'])) {
 							$skipheader = false;
 						}
 						else {
-						$buffer .= $header . ": ";
-						$buffer .= $doc[$header] . "; ";
+							$buffer .= $header . ": ";
+							$buffer .= $doc[$header] . "; ";
 						}
 					}
 					array_push($dboutputs, $buffer);
@@ -187,22 +187,7 @@ if(isset($_POST['formSubmit'])) {
 			echo "Error, unknown type <br>";
 		}
 	}
-	/*
-	 $cursor = $struct[0]->find();
-	 if($cursor->count() > 0) {
-	 foreach($cursor as $doc) {
-	 $buffer = '';
-	 foreach($SendData as $header) {
-	 $buffer .= $header . ": ";
-	 $buffer .= $doc[$header] . "; ";
-	 }
-	 array_push($dboutputs, $buffer);
-	 $buffer = '';
-	 }
-	 var_dump($dboutputs);
-	 //OUTPUT: array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " }
-	  }
-	  */
+	
 	
 }
 
