@@ -25,7 +25,7 @@ include('mongo.php');
 
 if(isset($_POST['formSubmit'])) {
 	
-	if(!isset($_POST['toothparam']))
+	if(!isset($_POST['ToothParam']))
 	{
 		if(!isset($_POST['SawDimensions']))
 		{
@@ -81,8 +81,8 @@ if(isset($_POST['formSubmit'])) {
 	
 	else if(!isset($_POST['SawDimensions']) && !isset($_POST['OperationData']))
 	{
-		$TP = array("toothparam");
-		$TPm = $_POST['toothparam'];
+		$TP = array("ToothParam");
+		$TPm = $_POST['ToothParam'];
 		
 		$SendData = array_merge($TP, $TPm);
 		$nS = count($SendData);
@@ -94,26 +94,23 @@ if(isset($_POST['formSubmit'])) {
 	
 	else if(!isset($_POST['SawDimensions']))
 	{
-		$TP = array("toothparam");
-		$TPm = $_POST['toothparam'];
+		$TP = array("ToothParam");
+		$TPm = $_POST['ToothParam'];
 		$TPa = array_merge($TP, $TPm);
 		
-		$OD = array("OpertaionData");
+		$OD = array("OperationData");
 		$ODm = $_POST['OperationData'];
 		$ODa = array_merge($OD, $ODm);
 		
 		$SendData = array(array($TPa), array($ODa));
 		$nS = count($SendData);
-		for($i=0; $i<$nS; $i++)
-		{
-			echo($SendData[$i] . " ");
-		}
+		//var_dump($SendData);
 	}
 	
 	else if(!isset($_POST['OperationData']))
 	{
-		$TP = array("toothparam");
-		$TPm = $_POST['toothparam'];
+		$TP = array("ToothParam");
+		$TPm = $_POST['ToothParam'];
 		$TPa = array_merge($TP, $TPm);
 		
 		$SD = array("SawDimensions"); 
@@ -122,37 +119,30 @@ if(isset($_POST['formSubmit'])) {
 		
 		$SendData = array(array($TPa), array($SDa));
 		$nS = count($SendData);
-		for($i=0; $i<$nS; $i++)
-		{
-			echo($SendData[$i] . " ");
-		}
+		//var_dump($SendData);
 	}
 	else 
 	{
-		$TP = array("toothparam");
-		$TPm = $_POST['toothparam'];
+		$TP = array("ToothParam");
+		$TPm = $_POST['ToothParam'];
 		$TPa = array_merge($TP, $TPm);
 		
 		$SD = array("SawDimensions"); 
 		$SDm = $_POST['SawDimensions'];
 		$SDa = array_merge($SD, $SDm);
 		
-		$OD = array("OpertaionData");
+		$OD = array("OperationData");
 		$ODm = $_POST['OperationData'];
 		$ODa = array_merge($OD, $ODm);
 		
 		$SendData = array(array($TPa), array($SDa), array($ODa));
 		
 		$nS = count($SendData);
-		for($i=0; $i<$nS; $i++)
-		{
-			echo($SendData[$i] . " ");
-		}
+		//var_dump($SendData);
 		
 		
 	}
 	$dboutputs = array();
-	
 	//var_dump($SendData);
 	
 	foreach($SendData as $struct) {
@@ -175,27 +165,48 @@ if(isset($_POST['formSubmit'])) {
 					array_push($dboutputs, $buffer);
 					$buffer = '';
 				}
-				var_dump($dboutputs);
-				//OUTPUT: array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " }
 			}
 			break;
 		}
 		else if(is_array($struct)) {
-			var_dump($struct);
+			foreach($struct as $inarray1) {
+				$outstruct = $db->$inarray1[0];
+				$cursor = $outstruct->find();
+				if($cursor->count() > 0) {
+					$dbhold = array();
+					foreach($cursor as $doc) {
+						$buffer = '';
+						$skipheader = true;
+						foreach($inarray1 as $header) {
+							if($skipheader) {
+								$skipheader = false;
+							}
+							else {
+								$buffer .= $header . ": ";
+								$buffer .= $doc[$header] . "; ";
+							}
+						}
+						array_push($dbhold, $buffer);
+						$buffer = '';
+					}
+					$dboutputs[$inarray1[0]] = $dbhold; 
+				}
+			}
 		}
 		else {
 			echo "Error, unknown type <br>";
 		}
 	}
-	
-	
+	var_dump($dboutputs);
+	//OUTPUT (only toothparam): array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " }
+	//OUTPUT (selected Hook Angle, Top Angle, Tangential Angle, Diameter, Platethickness, grind side) : array(3) { ["ToothParam"]=> array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " } ["SawDimensions"]=> array(3) { [0]=> string(36) "Diameter: 1.1; PlateThickness: 1.2; " [1]=> string(36) "Diameter: 2.1; PlateThickness: 2.2; " [2]=> string(36) "Diameter: 3.1; PlateThickness: 3.2; " } ["OperationData"]=> array(4) { [0]=> string(15) "GrindSide: 11; " [1]=> string(15) "GrindSide: 21; " [2]=> string(15) "GrindSide: 31; " [3]=> string(15) "GrindSide: 41; " } }
 }
 
 ?>
 
 <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-	<label for='toothparam[]'>To select multiple elements hold down the 'ctrl' key <br/><br/>Tooth Parameters<br/>Select data you would like displayed:</label><br>
-	<select multiple="multiple" name="toothparam[]">
+	<label for='ToothParam[]'>To select multiple elements hold down the 'ctrl' key <br/><br/>Tooth Parameters<br/>Select data you would like displayed:</label><br>
+	<select multiple="multiple" name="ToothParam[]">
 		<option value="HookAngle">Hook Angle</option>
 		<option value="TopAngle">Top Angle</option>
 		<option value="TangentialAngle">Tangential Angle</option>
