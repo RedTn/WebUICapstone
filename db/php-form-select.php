@@ -23,6 +23,26 @@ label,a
 include('mongo.php');
 //*****************************
 
+   function multiarray_print($dataout)
+     {
+	    $nS = count($dataout);
+    	for($i=0; $i<$nS; $i++)
+					{
+						//$p = preg_split("/[\s,]+/", $dataout[$i], -1, PREG_SPLIT_NO_EMPTY);
+						$p = explode(";", $dataout[$i]);
+						for($n=0; $n<count($p)-1; $n++)
+						{
+							$s = explode(":", $p[$n]);
+							
+							echo("The value of $s[0] at $i is $s[1]<br/>\n");
+							
+						}
+						echo("<br/><br/>");
+	
+						
+					}
+     }
+
 if(isset($_POST['formSubmit'])) {
 	
 	if(!isset($_POST['ToothParam']))
@@ -199,12 +219,36 @@ if(isset($_POST['formSubmit'])) {
 			echo "Error, unknown type <br>";
 		}
 	}
-	var_dump($dboutputs);
+	//var_dump($dboutputs);
 	//var_dump($dboutputs2);
 	
 	//OUTPUT (only toothparam): array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " }
 	//OUTPUT (selected Hook Angle, Top Angle, Tangential Angle, Diameter, Platethickness, grind side) : array(3) { ["ToothParam"]=> array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " } ["SawDimensions"]=> array(3) { [0]=> string(36) "Diameter: 1.1; PlateThickness: 1.2; " [1]=> string(36) "Diameter: 2.1; PlateThickness: 2.2; " [2]=> string(36) "Diameter: 3.1; PlateThickness: 3.2; " } ["OperationData"]=> array(4) { [0]=> string(15) "GrindSide: 11; " [1]=> string(15) "GrindSide: 21; " [2]=> string(15) "GrindSide: 31; " [3]=> string(15) "GrindSide: 41; " } }
 	//OUTPUT (same as above, but with $dboutputs2): array(3) { [0]=> array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " } [1]=> array(3) { [0]=> string(36) "Diameter: 1.1; PlateThickness: 1.2; " [1]=> string(36) "Diameter: 2.1; PlateThickness: 2.2; " [2]=> string(36) "Diameter: 3.1; PlateThickness: 3.2; " } [2]=> array(4) { [0]=> string(15) "GrindSide: 11; " [1]=> string(15) "GrindSide: 21; " [2]=> string(15) "GrindSide: 31; " [3]=> string(15) "GrindSide: 41; " } }
+	
+	$dataout = $dboutputs;
+		    	if(array_key_exists ("ToothParam", $dataout)== TRUE || array_key_exists ("SawDimensions", $dataout) == TRUE || array_key_exists ("OperationData", $dataout) == TRUE)
+		    	{
+				    	if($dataout["ToothParam"] != NULL)
+				    	{
+				    		multiarray_print($dataout["ToothParam"]);
+				    	}
+				    	
+				    	if($dataout["SawDimensions"] != NULL)
+				    	{
+				    		multiarray_print($dataout["SawDimensions"]);
+				    	}
+				    	
+				    	if($dataout["OperationData"] != NULL)
+				    	{
+				    		multiarray_print($dataout["OperationData"]);
+				    	}
+		    	}
+		    	
+		    	else
+		    	{
+		    		multiarray_print($dataout);
+		    	}
 }
 
 ?>
