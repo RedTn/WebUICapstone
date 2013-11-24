@@ -143,6 +143,7 @@ if(isset($_POST['formSubmit'])) {
 		
 	}
 	$dboutputs = array();
+	$dboutputs2 = array();
 	//var_dump($SendData);
 	
 	foreach($SendData as $struct) {
@@ -190,6 +191,7 @@ if(isset($_POST['formSubmit'])) {
 						$buffer = '';
 					}
 					$dboutputs[$inarray1[0]] = $dbhold; 
+					array_push($dboutputs2, $dbhold);
 				}
 			}
 		}
@@ -198,8 +200,11 @@ if(isset($_POST['formSubmit'])) {
 		}
 	}
 	var_dump($dboutputs);
+	//var_dump($dboutputs2);
+	
 	//OUTPUT (only toothparam): array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " }
 	//OUTPUT (selected Hook Angle, Top Angle, Tangential Angle, Diameter, Platethickness, grind side) : array(3) { ["ToothParam"]=> array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " } ["SawDimensions"]=> array(3) { [0]=> string(36) "Diameter: 1.1; PlateThickness: 1.2; " [1]=> string(36) "Diameter: 2.1; PlateThickness: 2.2; " [2]=> string(36) "Diameter: 3.1; PlateThickness: 3.2; " } ["OperationData"]=> array(4) { [0]=> string(15) "GrindSide: 11; " [1]=> string(15) "GrindSide: 21; " [2]=> string(15) "GrindSide: 31; " [3]=> string(15) "GrindSide: 41; " } }
+	//OUTPUT (same as above, but with $dboutputs2): array(3) { [0]=> array(3) { [0]=> string(53) "HookAngle: 1; TopAngle: 50.5; TangentialAngle: 60.5; " [1]=> string(54) "HookAngle: 98; TopAngle: 20.2; TangentialAngle: 20.3; " [2]=> string(53) "HookAngle: 1.5; TopAngle: 3.5; TangentialAngle: 2.4; " } [1]=> array(3) { [0]=> string(36) "Diameter: 1.1; PlateThickness: 1.2; " [1]=> string(36) "Diameter: 2.1; PlateThickness: 2.2; " [2]=> string(36) "Diameter: 3.1; PlateThickness: 3.2; " } [2]=> array(4) { [0]=> string(15) "GrindSide: 11; " [1]=> string(15) "GrindSide: 21; " [2]=> string(15) "GrindSide: 31; " [3]=> string(15) "GrindSide: 41; " } }
 }
 
 ?>
