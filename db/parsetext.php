@@ -74,6 +74,7 @@ if( isset($_POST['txt'])) {
 					unset($dbbuffer);
 				}
 			}
+			array_pop($dbarray);
 			$thisdb = $db->$collection[0];
 			$thisdb->batchInsert($dbarray);
 			var_dump($dbarray);
