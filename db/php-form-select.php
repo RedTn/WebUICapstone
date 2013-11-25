@@ -60,10 +60,12 @@ if(isset($_POST['formSubmit'])) {
 				
 				$SendData = array_merge($OD, $ODm);
 				$nS = count($SendData);
+				/*
 				for($i=0; $i<$nS; $i++)
 				{
 					echo($SendData[$i] . " ");
 				}
+				*/
 			}
 		}	
 		else if(!isset($_POST['OperationData']))
@@ -73,10 +75,12 @@ if(isset($_POST['formSubmit'])) {
 			
 			$SendData = array_merge($SD, $SDm);
 			$nS = count($SendData);
+			/*
 			for($i=0; $i<$nS; $i++)
 			{
 				echo($SendData[$i] . " ");
 			}
+			*/
 		}
 		
 		else 
@@ -91,10 +95,12 @@ if(isset($_POST['formSubmit'])) {
 			
 			$SendData = array(array($SDa), array($ODa));
 			$nS = count($SendData);
+			/*
 			for($i=0; $i<$nS; $i++)
 			{
 				echo($SendData[$i] . " ");
 			}
+			*/
 		}
 		
 	}				
@@ -106,10 +112,12 @@ if(isset($_POST['formSubmit'])) {
 		
 		$SendData = array_merge($TP, $TPm);
 		$nS = count($SendData);
+		/*
 		for($i=0; $i<$nS; $i++)
 		{
 			echo($SendData[$i] . " ");
 		}
+		*/
 	}
 	
 	else if(!isset($_POST['SawDimensions']))
