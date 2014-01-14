@@ -22,3 +22,7 @@
 <form method = "LINK" Action="db/php-form-select.php">
 	<INPUT TYPE="submit" VALUE="Display Database">
 </form>
+
+<form method = "LINK" Action="db/getkeyvalues.php">
+	<INPUT TYPE="submit" VALUE="Get Keys">
+</form>
