@@ -1,2 +1,14 @@
 start C:\mongodb\bin\mongo logging --eval "var collection = 'ToothParam'" C:\data\db\scripts\variety.js
 start C:\mongodb\bin\mongo logging --eval "var collection = 'SawDimensions'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'PassData'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'OperationData'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'OperationsList'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'Gantries'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'Rotaries'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'Spindles'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'FeedFingers'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'SawClamps'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'StateItem'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'ToothParameters'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'BoundingBox'" C:\data\db\scripts\variety.js
+start C:\mongodb\bin\mongo logging --eval "var collection = 'LastDirections'" C:\data\db\scripts\variety.js
