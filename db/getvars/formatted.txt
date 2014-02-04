@@ -1,0 +1,146 @@
+24
+ToothParam
+HookAngle As Float        'The angle in degrees of slope on what is essentially the face of a tooth.
+TopAngle As Float         'The angle in degrees of slope on the top of the tooth, from front to back.
+TangentialAngle As Float  
+RadialAngle As Float  
+BevelDirection As Integer '+1 = Left, -1 = Right Since there can only be one bevel, we use a simple 1,-1 system so that mathematics can be easier as well.
+BevelTop As Float         'The angle in degrees of the actual top bevel.
+BevelFace As Float        'The angle in degrees of the actual face bevel.  
+Feed_Rate As Float        'A value that is obsolete here as it is defined within the pass data.
+CutDepth As Float         'Again, obsolete. Refer to path data.  
+TopLength As Float        'What is essentially, the depth of the tooth. The length of the top side of it.
+FaceLength As Float       'What is essentially the height of the tooth. The length of front side of it.
+SideLength As Float       'The length of the side of the tooth, not necessarily depth but could be construed as such.
+Runway As Float           'The runway is the distance we can go to make the cut.  
+PlungeDepth As Float      'The depth in mm that the machine needs to drill into the top of the tooth to.
+PlungeOffset As Float     'A distance in mm from the right side of the tooth where the plunge is to take place.  
+NoRounds As Integer       'No idea, probably redundant but will wait till completion to remove.<-----------------------------------------------------DEPRECATED
+Pitch As Float            'In case of variable pitch, each tooth can contain its own pitch info.  
+ChipBreakDepth As Float   'The depth in mm that the machine needs to drill into the top of the tooth.
+ChipBreakOffset As Float  'A distance in mm from the right side of the tooth where the chip break is to take place.  
+ChamferLeft As Float      'The chamfer in degrees to be applied to the left side of the tooth.
+ChamferRight As Float     'The chamfer in defrees to be applied to the right side of the tooth.
+ChamferFlatWidth As Float 'Im not really sure, we'll have to see as I figure out this business. Previous programmer had strange naming conventions.
+ChamferHeightOffset As Float
+10
+SawDimensions
+Diameter As Float           'The diameter of the actual circular saw itself.
+PlateThickness As Float     'The thickness of the actual saw itself.
+Kerf As Float               'A global value that represents the horizontal thickness of each tooth.
+NumberOfTeeth As Integer    'Simply put, the total number of teeth on the saw.
+TeethInPattern              'The number of varying teeth in the Teeth array below.
+Pitch As Float              'The distance between the front of one tooth and the front of the next tooth.
+MultiPitch As Integer       'Ans integer to determine whether or not the saw has pattern teeth with varying pitch.
+Teeth(5) As ToothParam      'An array to store any and all variations in the tooth pattern
+CurrentTooth As Integer
+5
+PassData
+DepthOfCut As Float
+Feed_Rate As Float
+FeedType As Float
+RepeatPass As Integer
+7
+OperationData
+Type As Integer 'Top = 0, Face = 1, DualSide = 2, TopFace = 3, Plunge = 4, Profile = 5
+GrindSide As Integer
+MaterialType As Integer
+NumberOfPasses As Integer
+Passes(2) As PassData
+CurrentPass As Integer
+3
+OperationsList
+Operations(5) As OperationData
+CurrentOp As Integer
+11
+Gantries
+XGantry As Integer
+YGantry As Integer
+ZGantry As Integer
+grindSide As Integer
+fwdXLimit As Integer
+revXLimit As Integer
+fwdYLimit As Integer
+revYLimit As Integer
+fwdZLimit As Integer
+revZLimit As Integer
+14
+Rotaries
+YawAxisNum As Integer
+PitchAxisNum As Integer
+SpindleCenter(3) As Float 'Ix,Iy,Iz
+DistanceFromEdge(3) As Float 'Ax,Ay,Az
+DefinedZeroAngle As Float
+DefinedNinetyAngle As Float
+PitchAngle As Float           'deg, angle of rotation for RxM2 from zero position (spindle pointing straight down) to the home position (Home currently set as the plunge grind position) 
+PitchOffset As Float          'deg, correction for the PitchAngle to accomodate manufacturing error
+YawOffset As Float            'deg, correction for the YawAngle to accomodate manufacturing error
+ToolDepth As Float            'mm, distance from collar plane to grinding face of the current tool
+ToolRadius As Float           'mm, radius of the tool for the current grinding operation
+R1RAD As Float                'mm, distance from the yaw rotation axis to the intersection of pitch and spindle rotation axes (Point I)
+R2RAD As Float                'mm, distance from the collar ring midplane of the tool to the pitch rotation axis
+4
+Spindles
+Number As Integer             'Spindle Index
+ShouldRotate As Integer       'Safety flag, indicates if the tool is properly in place and spindle is not rotating.
+RPM As Integer
+13
+FeedFingers
+Number As Integer             'Stepper motor axis index
+Extend As Integer             'DOUT index to control the extend valve
+Retract As Integer            'DOUT index to control the retract valve
+ExtendStop As Integer         'DIN index to read the extend stop sensor
+RetractStop As Integer        'DIN index to read the retract stop sensor
+DeadStop As Integer           'DIN index to read the rotational deadstop
+Rectangular As Integer        'DIN index to read the rectangular sensor
+Velocity As Float             'Feedfinger extract/retract motion velocity, in mm/s.
+AngleStep As Float            'Magnitude of the angle, in degrees, to turn to step the next tooth into position. Redefined depending on the saw.
+StrokeStepFactor As Float     'Factor, in percent, to extend the feedfinger when stepping the next tooth into position. Redefinded depending on the saw.
+AngularVelocity As Float      'Frequency, in Hz, to accomodate different travel distances for the feedfinger. Redefined depending on the saw.
+RotationStepperError As Float 'Stepper displacements are intrinsically defined as integer values; thus, accuracy is lost for each displacement that is not a whole number. This parameter keeps track of that error.
+4
+SawClamps
+AnalogSignature As Integer    'DAC index to control the analog ITV pressure output signal.
+DigitalSignature As Integer   'DOUT index to control the engage/retract valve.
+PartialPressure As Float      'Percent pressure to partially clamp the saw when feeding teeth.
+7
+StateItem
+CurrentState As Integer
+DigitalSignature As Integer
+DigitalSlowLimit As Integer
+DigitalMidLimit As Integer
+DigitalEndLimit As Integer
+AnalogSignature As Integer
+3
+ToothParameters
+F(3) As Float
+C(3) As Float 
+12
+BoundingBox
+XPosition(3) As Float  'Furthest point on the Box along the x-axis.
+YPosition(3) As Float  'Furthest point on the Box along the y-axis.
+ZPosition(3) As Float  'Furthest point on the Box along the z-axis.
+Width As Float         'Distance across the Box along the x-axis.
+Height As Float        'Distance across the Box along the y-axis.
+Depth As Float         'Distance across the Box along the z-axis.
+Yaw As Float           'Rotation of the Box along the "x-axis".
+Roll As Float          'Rotation of the Box along the "y-axis".
+Pitch As Float         'Rotation of the Box along the "z-axis".
+Normal(3) As Float     'The calculated normal for the last movement
+IsMoving As Integer    'A flag to track whether or not we should be updating this box's normal
+14
+LastDirections
+xGantryOne As 0
+yGantryOne As 1
+zGantryOne As 2
+xGantryTwo As 3
+yGantryTwo As 4
+yawGantryOne As 5
+pitchGantryOne As 6
+zGantryTwo As 7
+yawGantryTwo As 8
+pitchGantryTwo As 9
+feedFingerRotationOne As 10
+feedFingerRotationTwo As 11
+toolbayOne As 12
+999

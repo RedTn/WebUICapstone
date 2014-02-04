@@ -1,0 +1,173 @@
+class ToothParam
+{
+public ObjectId Id { get; set; }
+public string HookAngle { get; set; }
+public string TopAngle { get; set; }
+public string TangentialAngle { get; set; }
+public string RadialAngle { get; set; }
+public string BevelDirection { get; set; }
+public string BevelTop { get; set; }
+public string BevelFace { get; set; }
+public string Feed_Rate { get; set; }
+public string CutDepth { get; set; }
+public string TopLength { get; set; }
+public string FaceLength { get; set; }
+public string SideLength { get; set; }
+public string Runway { get; set; }
+public string PlungeDepth { get; set; }
+public string PlungeOffset { get; set; }
+public string NoRounds { get; set; }
+public string Pitch { get; set; }
+public string ChipBreakDepth { get; set; }
+public string ChipBreakOffset { get; set; }
+public string ChamferLeft { get; set; }
+public string ChamferRight { get; set; }
+public string ChamferFlatWidth { get; set; }
+public string ChamferHeightOffset { get; set; }
+}
+class SawDimensions
+{
+public ObjectId Id { get; set; }
+public string Diameter { get; set; }
+public string PlateThickness { get; set; }
+public string Kerf { get; set; }
+public string NumberOfTeeth { get; set; }
+public string TeethInPattern { get; set; }
+public string Pitch { get; set; }
+public string MultiPitch { get; set; }
+public string Teeth(5) { get; set; }
+public string CurrentTooth { get; set; }
+}
+class PassData
+{
+public ObjectId Id { get; set; }
+public string DepthOfCut { get; set; }
+public string Feed_Rate { get; set; }
+public string FeedType { get; set; }
+public string RepeatPass { get; set; }
+}
+class OperationData
+{
+public ObjectId Id { get; set; }
+public string Type { get; set; }
+public string GrindSide { get; set; }
+public string MaterialType { get; set; }
+public string NumberOfPasses { get; set; }
+public string Passes(2) { get; set; }
+public string CurrentPass { get; set; }
+}
+class OperationsList
+{
+public ObjectId Id { get; set; }
+public string Operations(5) { get; set; }
+public string CurrentOp { get; set; }
+}
+class Gantries
+{
+public ObjectId Id { get; set; }
+public string XGantry { get; set; }
+public string YGantry { get; set; }
+public string ZGantry { get; set; }
+public string grindSide { get; set; }
+public string fwdXLimit { get; set; }
+public string revXLimit { get; set; }
+public string fwdYLimit { get; set; }
+public string revYLimit { get; set; }
+public string fwdZLimit { get; set; }
+public string revZLimit { get; set; }
+}
+class Rotaries
+{
+public ObjectId Id { get; set; }
+public string YawAxisNum { get; set; }
+public string PitchAxisNum { get; set; }
+public string SpindleCenter(3) { get; set; }
+public string DistanceFromEdge(3) { get; set; }
+public string DefinedZeroAngle { get; set; }
+public string DefinedNinetyAngle { get; set; }
+public string PitchAngle { get; set; }
+public string PitchOffset { get; set; }
+public string YawOffset { get; set; }
+public string ToolDepth { get; set; }
+public string ToolRadius { get; set; }
+public string R1RAD { get; set; }
+public string R2RAD { get; set; }
+}
+class Spindles
+{
+public ObjectId Id { get; set; }
+public string Number { get; set; }
+public string ShouldRotate { get; set; }
+public string RPM { get; set; }
+}
+class FeedFingers
+{
+public ObjectId Id { get; set; }
+public string Number { get; set; }
+public string Extend { get; set; }
+public string Retract { get; set; }
+public string ExtendStop { get; set; }
+public string RetractStop { get; set; }
+public string DeadStop { get; set; }
+public string Rectangular { get; set; }
+public string Velocity { get; set; }
+public string AngleStep { get; set; }
+public string StrokeStepFactor { get; set; }
+public string AngularVelocity { get; set; }
+public string RotationStepperError { get; set; }
+}
+class SawClamps
+{
+public ObjectId Id { get; set; }
+public string AnalogSignature { get; set; }
+public string DigitalSignature { get; set; }
+public string PartialPressure { get; set; }
+}
+class StateItem
+{
+public ObjectId Id { get; set; }
+public string CurrentState { get; set; }
+public string DigitalSignature { get; set; }
+public string DigitalSlowLimit { get; set; }
+public string DigitalMidLimit { get; set; }
+public string DigitalEndLimit { get; set; }
+public string AnalogSignature { get; set; }
+}
+class ToothParameters
+{
+public ObjectId Id { get; set; }
+public string F(3) { get; set; }
+public string C(3) { get; set; }
+}
+class BoundingBox
+{
+public ObjectId Id { get; set; }
+public string XPosition(3) { get; set; }
+public string YPosition(3) { get; set; }
+public string ZPosition(3) { get; set; }
+public string Width { get; set; }
+public string Height { get; set; }
+public string Depth { get; set; }
+public string Yaw { get; set; }
+public string Roll { get; set; }
+public string Pitch { get; set; }
+public string Normal(3) { get; set; }
+public string IsMoving { get; set; }
+}
+class LastDirections
+{
+public ObjectId Id { get; set; }
+public string xGantryOne { get; set; }
+public string yGantryOne { get; set; }
+public string zGantryOne { get; set; }
+public string xGantryTwo { get; set; }
+public string yGantryTwo { get; set; }
+public string yawGantryOne { get; set; }
+public string pitchGantryOne { get; set; }
+public string zGantryTwo { get; set; }
+public string yawGantryTwo { get; set; }
+public string pitchGantryTwo { get; set; }
+public string feedFingerRotationOne { get; set; }
+public string feedFingerRotationTwo { get; set; }
+public string toolbayOne { get; set; }
+}
