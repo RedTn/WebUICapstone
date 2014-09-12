@@ -22,7 +22,6 @@ label,a
 	//COMMENT THIS OUT TO WORK ON NON MONGODB
 include('mongo.php');
 //*****************************
-
    function multiarray_print($dataout)
      {
 	    $nS = count($dataout);

@@ -5,7 +5,7 @@
  * To change the template for this generated file go to
  * Window - Preferences - PHPeclipse - PHP - Code Templates
  */
- include('mongo.php');
+ include('mongo.php');		//CHANGE IF NEEDED
  function getDateTimeFromMongoId(MongoId $mongoId)
 {
     $dateTime = new DateTime('@'.$mongoId->getTimestamp());
@@ -24,8 +24,6 @@
 	//$format = date_format($output, 'd-m-Y H:i:s');	//2 timestamp formats for you to try, completely adjustible
 	$format = date_format($output, 'g:ia \o\n l jS F Y');
  	echo $format . "*********"; 
- 	
- 	//I can also display timezone and a different format for date time, just ask me
  	
  }
  
