@@ -1,0 +1,51 @@
+.l {
+	list-style-type: disk; FONT-SIZE: 9pt; COLOR: #FCDB73; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: left
+}
+.text01 {
+	FONT-SIZE: 9pt; COLOR: #515551; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: justify
+}
+.text02 {
+	FONT-SIZE: 9pt; COLOR: #FF3D01; FONT-FAMILY: verdana,  ms sans serif, arial, helvetica TEXT-ALIGN: left
+}
+.text03 {
+	FONT-SIZE: 8pt; COLOR: #29425E; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: left
+}
+.text04 {
+	FONT-SIZE: 8pt; COLOR: #FFA406; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: right; 
+}
+.text05 {
+	FONT-SIZE: 8pt; COLOR: #29425E; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: right
+}
+.text06 {
+	FONT-SIZE: 8pt; COLOR: #FFFFFF; FONT-FAMILY: verdana,  ms sans serif, arial, helvetica TEXT-ALIGN: left
+}
+.text07 {
+	FONT-SIZE: 9pt; COLOR: #29425E; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: center
+}
+A {
+	FONT-SIZE: 9pt; COLOR: #FF3D01; FONT-FAMILY:  verdana, ms sans serif, Arial; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 9pt; COLOR: #515551; FONT-FAMILY:  verdana, ms sans serif, Arial; TEXT-DECORATION: none; TEXT-ALIGN: right; 
+}
+A.menu {
+	FONT-SIZE: 9pt; COLOR: #FFFFFF; TEXT-DECORATION: none
+}
+A:hover.menua {
+	FONT-SIZE: 9pt; COLOR: #FFCE75; FONT-FAMILY:  verdana, ms sans serif, Arial; TEXT-DECORATION: none
+}
+A.menua {
+	FONT-SIZE: 9pt; COLOR: #708ECC; TEXT-DECORATION: none
+}
+A:hover.menub {
+	FONT-SIZE: 9pt; COLOR: #708ECC; FONT-FAMILY:  verdana, ms sans serif, Arial; TEXT-DECORATION: none; TEXT-ALIGN: left;
+}
+A:hover.menuc {
+	FONT-SIZE: 9pt; COLOR: #FFFFFF; FONT-FAMILY:  verdana, ms sans serif, Arial; TEXT-DECORATION: none; TEXT-ALIGN: left;
+}
+.H4 {
+	FONT-SIZE: 10pt; COLOR: #29425E; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: justify
+}
+INPUT {
+	FONT-SIZE: 9px
+}
